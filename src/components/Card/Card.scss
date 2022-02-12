@@ -1,0 +1,25 @@
+.card-container {
+  border: 1px solid black;
+  width: 300px;
+  .card-content {
+    .image {
+      height: 150px;
+      img {
+        height: 150px;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+    .texts {
+      padding: 8px;
+      line-height: 26px;
+      .title {
+        font-weight: bold;
+      }
+      .description {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

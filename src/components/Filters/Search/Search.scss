@@ -1,0 +1,14 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #666;
+  border-radius: 5555px;
+  padding: 4px 8px;
+  margin-right: 20px;
+  input {
+    margin-left: 6px;
+    -webkit-appearance: none;
+    outline: none;
+    border: 0;
+  }
+}

@@ -1,0 +1,18 @@
+.pagination-container {
+  display: inline-block;
+  .pagination-content {
+    display: flex;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .arrow-clickable {
+      cursor: pointer;
+    }
+    .arrow-no-clickable {
+      cursor: not-allowed;
+    }
+  }
+}

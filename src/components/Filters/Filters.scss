@@ -1,0 +1,12 @@
+.filters-container {
+  display: flex;
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    select {
+      padding: 4px;
+      width: 150px;
+    }
+  }
+}

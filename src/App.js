@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Planets from "pages/Planets/Planets";
+import "./App.scss";
+import Menu from "./components/Menu/Menu";
+import PageContainer from "./components/PageContainer/PageContainer";
 
 function App() {
+  const pageToShow = () => {
+    return <Planets />;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <div className="menu">
+        <Menu />
+      </div>
+      <div className="main-content">
+        <PageContainer>{pageToShow()}</PageContainer>
+      </div>
     </div>
   );
 }

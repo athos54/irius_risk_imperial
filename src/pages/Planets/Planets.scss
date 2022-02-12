@@ -1,0 +1,16 @@
+.planets-container {
+  .planets {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .search {
+    margin-bottom: 20px;
+  }
+  .planet {
+    margin: 0 8px 8px 0;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

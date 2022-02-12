@@ -1,0 +1,27 @@
+.menu-container {
+  padding: 16px;
+  .logo {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .menu-items {
+    margin-top: 16px;
+    line-height: 30px;
+    .menu-item {
+      display: flex;
+      cursor: pointer;
+      span {
+        margin: 0 6px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+}

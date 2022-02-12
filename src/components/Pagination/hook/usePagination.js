@@ -1,4 +1,32 @@
-const usePagination = ({ min, max, total, item, onPageLeft, onPageRight }) => {
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useEffect, useState } from "react";
+
+const usePagination = ({
+  filter,
+  planets,
+  entity,
+  onPageLeft,
+  onPageRight,
+}) => {
+  const [min, setMin] = useState();
+  const [max, setMax] = useState();
+  const [total, setTotal] = useState();
+  const [item, setItem] = useState();
+
+  useEffect(() => {
+    setMax(
+      !planets.count
+        ? ""
+        : planets.count > 10 * filter.page
+        ? 10 * filter.page
+        : planets.count
+    );
+    setMin((filter.page - 1) * 10 + 1);
+    setTotal(planets.count || "");
+    setItem(entity);
+  }, [filter, planets]);
+
   const handleClickLeft = () => {
     if (min === 1) {
       return;
@@ -25,6 +53,9 @@ const usePagination = ({ min, max, total, item, onPageLeft, onPageRight }) => {
     isLeftClickable,
     isRightClickable,
     getPaginatorText,
+    min,
+    max,
+    total,
   };
 };
 

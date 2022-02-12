@@ -1,0 +1,7 @@
+.card-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  .planet {
+    margin: 0 8px 8px 0;
+  }
+}

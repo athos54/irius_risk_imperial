@@ -3,6 +3,7 @@ import { SEARCH_TIMEOUT } from "config/config";
 
 const useFilters = ({ filter, setFilter }) => {
   const [timer, setTimer] = useState(null);
+
   const toggleOrder = () => {
     if (filter.order === "asc") {
       setFilter({ ...filter, order: "desc" });

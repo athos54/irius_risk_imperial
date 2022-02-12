@@ -1,25 +1,19 @@
 import React from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropleft } from "react-icons/io";
-import usePagination from "./hook/usePagination";
 import "./Pagination.scss";
 
-const Pagination = ({ min, max, total, item, onPageLeft, onPageRight }) => {
+const Pagination = ({ paginator }) => {
   const {
     handleClickLeft,
     handleClickRight,
     isLeftClickable,
     isRightClickable,
     getPaginatorText,
-  } = usePagination({
     min,
     max,
     total,
-    item,
-    onPageLeft,
-    onPageRight,
-  });
-
+  } = paginator;
   return (
     <div className="pagination-container">
       <div className="pagination-content">

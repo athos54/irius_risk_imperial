@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import Card from "components/Card/Card";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ListPage.scss";
 import Filters from "components/Filters/Filters";
 import Pagination from "components/Pagination/Pagination";
-import { getPlanets } from "services/planetService";
+import CardList from "./components/CardList/CardList";
+import usePagination from "components/Pagination/hook/usePagination";
+import useListPage from "./hook/useListPage";
 const ListPage = ({
   entity,
   titleKey,
@@ -14,48 +14,22 @@ const ListPage = ({
   otherKey,
   otherString,
 }) => {
-  const [planets, setPlanets] = useState([]);
-  const [filter, setFilter] = useState({
-    search: "",
-    planet: "",
-    order: "asc",
-    page: 1,
+  const {
+    filter,
+    setFilter,
+    generateSelectOptions,
+    planets,
+    handlePageLeft,
+    handlePageRight,
+  } = useListPage({ entity });
+
+  const paginator = usePagination({
+    filter,
+    planets,
+    entity,
+    onPageLeft: handlePageLeft,
+    onPageRight: handlePageRight,
   });
-
-  useEffect(() => {
-    getPlanets(entity, filter).then((res) => {
-      setPlanets(res.data);
-    });
-  }, [filter]);
-
-  const generateSelectOptions = () => {
-    if (!planets.results) {
-      return [];
-    }
-    const planetsOptions = planets.results.map((planet) => {
-      const aux = planet.url.split("/");
-      const id = aux[aux.length - 2];
-      return {
-        value: id,
-        label: planet.name,
-      };
-    });
-
-    const placeHolderOption = {
-      value: -1,
-      label: "Planet name",
-    };
-    return [placeHolderOption, ...planetsOptions];
-  };
-
-  const handlePageLeft = () => {
-    if (filter.page > 1) {
-      setFilter((filter) => ({ ...filter, page: filter.page - 1 }));
-    }
-  };
-  const handlePageRight = () => {
-    setFilter((filter) => ({ ...filter, page: filter.page + 1 }));
-  };
 
   return (
     <div className="list-page-container">
@@ -68,33 +42,20 @@ const ListPage = ({
         />
       </div>
       <div className="list-page">
-        {planets?.results?.map((planet, index) => {
-          return (
-            <div key={index} className="planet">
-              <Card
-                img={`assets/${entity}/${planet.name
-                  .toLowerCase()
-                  .replaceAll(" ", "")}.png`}
-                title={planet[titleKey]}
-                subtitle={planet[subtitleKey]}
-                description={descriptionString(planet[descriptionKey])}
-                other={otherString(planet[otherKey])}
-              />
-            </div>
-          );
-        })}
+        <CardList
+          planets={planets}
+          entity={entity}
+          titleKey={titleKey}
+          subtitleKey={subtitleKey}
+          descriptionKey={descriptionKey}
+          descriptionString={descriptionString}
+          otherKey={otherKey}
+          otherString={otherString}
+        />
       </div>
       <div className="pagination">
         <Pagination
-          min={(filter.page - 1) * 10 + 1}
-          max={
-            !planets.count
-              ? ""
-              : planets.count > 10 * filter.page
-              ? 10 * filter.page
-              : planets.count
-          }
-          total={planets.count || ""}
+          paginator={paginator}
           item={entity}
           onPageLeft={handlePageLeft}
           onPageRight={handlePageRight}

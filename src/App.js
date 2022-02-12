@@ -3,10 +3,10 @@ import Menu from "./components/Menu/Menu";
 import PageContainer from "./components/PageContainer/PageContainer";
 import Spinner from "components/Spinner/Spinner";
 import Footer from "components/Footer/Footer";
-import useDataFetch from "hooks/useDataFetch";
+import usePageNavigation from "hooks/usePageNavigation";
 
 function App() {
-  const { showSpinner, page } = useDataFetch();
+  const { showSpinner, page } = usePageNavigation();
 
   return (
     <>

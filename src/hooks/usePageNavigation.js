@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { menuItems } from "components/Menu/menuItems";
 import { useInterceptor } from "hooks/useInterceptor";
 
-const useDataFetch = () => {
+const usePageNavigation = () => {
   const [location] = useLocation();
   const [page, setPage] = useState(null);
   const { showSpinner } = useInterceptor();
@@ -31,4 +31,4 @@ const useDataFetch = () => {
   };
 };
 
-export default useDataFetch;
+export default usePageNavigation;

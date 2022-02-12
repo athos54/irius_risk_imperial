@@ -1,4 +1,6 @@
 .menu-container {
+  background-color: #eee;
+  min-height: 100%;
   padding: 16px;
   .logo {
     width: 100%;
@@ -7,9 +9,12 @@
     }
   }
   .menu-items {
-    margin-top: 16px;
+    margin-top: 36px;
     line-height: 30px;
     .menu-item {
+      color: inherit;
+      text-decoration: inherit;
+
       display: flex;
       cursor: pointer;
       span {
@@ -20,7 +25,7 @@
         align-items: center;
       }
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(255, 255, 255, 0.09);
       }
     }
   }

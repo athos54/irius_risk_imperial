@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Filters.scss";
 import { BiSortDown } from "react-icons/bi";
 import { BiSortUp } from "react-icons/bi";
 import Search from "./Search/Search";
+import { SEARCH_TIMEOUT } from "config/config";
 
 const Filters = ({ filter, setFilter, options = [] }) => {
+  const [timer, setTimer] = useState(null);
   const toggleOrder = () => {
-    console.log("toggleOrder");
     if (filter.order === "asc") {
       setFilter({ ...filter, order: "desc" });
     } else {
@@ -16,16 +17,23 @@ const Filters = ({ filter, setFilter, options = [] }) => {
   };
 
   const handleSelectChange = (e) => {
-    console.log("handleSelectChange");
     setFilter({ ...filter, planet: e.target.value });
   };
 
   const handleSearchChange = (searchValue) => {
-    console.log("searchValue", searchValue);
     if (searchValue === filter.search) {
       return;
     }
-    setFilter({ ...filter, search: searchValue });
+
+    if (timer) {
+      clearInterval(timer);
+    }
+
+    setTimer(
+      setTimeout(() => {
+        setFilter({ ...filter, search: searchValue });
+      }, SEARCH_TIMEOUT)
+    );
   };
 
   return (

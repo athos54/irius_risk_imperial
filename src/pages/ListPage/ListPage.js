@@ -1,13 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Card from "components/Card/Card";
-import PopulationIcon from "components/PopulationIcon/PopulationIcon";
 import React, { useEffect, useState } from "react";
-import { getPlanets } from "services/planetService";
-import { abbreviateNumber } from "helpers/abbreviateNumber";
-import "./Planets.scss";
+import "./ListPage.scss";
 import Filters from "components/Filters/Filters";
 import Pagination from "components/Pagination/Pagination";
-
-const Planets = () => {
+import { getPlanets } from "services/planetService";
+const ListPage = ({
+  entity,
+  titleKey,
+  subtitleKey,
+  descriptionKey,
+  descriptionString,
+  otherKey,
+  otherString,
+}) => {
   const [planets, setPlanets] = useState([]);
   const [filter, setFilter] = useState({
     search: "",
@@ -17,17 +23,11 @@ const Planets = () => {
   });
 
   useEffect(() => {
-    getPlanets(filter).then((res) => {
+    getPlanets(entity, filter).then((res) => {
       setPlanets(res.data);
+      console.log("createportal");
     });
   }, [filter]);
-
-  const getPopulationString = (population) => {
-    if (population === "unknown") {
-      return "Unknown population";
-    }
-    return `Population of ${abbreviateNumber(population)}`;
-  };
 
   const generateSelectOptions = () => {
     if (!planets.results) {
@@ -59,8 +59,8 @@ const Planets = () => {
   };
 
   return (
-    <div className="planets-container">
-      <h2>Planets</h2>
+    <div className="list-page-container">
+      <h2>{entity.toUpperCase()}</h2>
       <div className="search">
         <Filters
           filter={filter}
@@ -68,20 +68,18 @@ const Planets = () => {
           options={generateSelectOptions()}
         />
       </div>
-      <div className="planets">
+      <div className="list-page">
         {planets?.results?.map((planet, index) => {
           return (
             <div key={index} className="planet">
               <Card
-                img={`assets/planets/${planet.name
+                img={`assets/${entity}/${planet.name
                   .toLowerCase()
                   .replaceAll(" ", "")}.png`}
-                title={planet.name}
-                subtitle={planet.climate}
-                description={getPopulationString(planet.population)}
-                other={
-                  planet.population !== "unknown" ? <PopulationIcon /> : ""
-                }
+                title={planet[titleKey]}
+                subtitle={planet[subtitleKey]}
+                description={descriptionString(planet[descriptionKey])}
+                other={otherString(planet[otherKey])}
               />
             </div>
           );
@@ -90,9 +88,15 @@ const Planets = () => {
       <div className="pagination">
         <Pagination
           min={(filter.page - 1) * 10 + 1}
-          max={10 * filter.page}
-          total={planets.count}
-          item="planets"
+          max={
+            !planets.count
+              ? ""
+              : planets.count > 10 * filter.page
+              ? 10 * filter.page
+              : planets.count
+          }
+          total={planets.count || ""}
+          item={entity}
           onPageLeft={handlePageLeft}
           onPageRight={handlePageRight}
         />
@@ -101,4 +105,4 @@ const Planets = () => {
   );
 };
 
-export default Planets;
+export default ListPage;

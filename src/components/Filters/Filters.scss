@@ -1,12 +1,16 @@
 .filters-container {
   display: flex;
-
+  flex-wrap: wrap;
+  .filters-item,
+  .order-item {
+    margin-top: 5px;
+  }
   .order-item {
     display: flex;
     align-items: center;
     select {
       padding: 4px;
-      width: 150px;
+      width: 177px;
     }
   }
 }

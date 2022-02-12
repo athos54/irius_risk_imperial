@@ -5,7 +5,7 @@ import "./Header.scss";
 const Header = () => {
   return (
     <div className="header-container">
-      <div>Imperial destroyers center</div>
+      <h1>Imperial destroyers center</h1>
       <div className="header-icons">
         <BsBell />
         <FaUser />

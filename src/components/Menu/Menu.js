@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { BiPlanet } from "react-icons/bi";
-import { GiSpaceship } from "react-icons/gi";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { FaTruckMonster } from "react-icons/fa";
+import { Link } from "wouter";
 import "./Menu.scss";
+import { menuItems } from "./menuItems";
+
 const Menu = () => {
   return (
     <div className="menu-container">
@@ -11,30 +11,16 @@ const Menu = () => {
         <img src="assets/logo.png" alt="logo" />
       </div>
       <div className="menu-items">
-        <div className="menu-item">
-          <span>
-            <BiPlanet />
-          </span>
-          <span>Planets</span>
-        </div>
-        <div className="menu-item">
-          <span>
-            <GiSpaceship />
-          </span>
-          <span>Starships</span>
-        </div>
-        <div className="menu-item">
-          <span>
-            <BsFillPeopleFill />
-          </span>
-          <span>People</span>
-        </div>
-        <div className="menu-item">
-          <span>
-            <FaTruckMonster />
-          </span>
-          <span>Vehicles</span>
-        </div>
+        {menuItems.map((item, index) => {
+          return (
+            <Link key={index} href={item.url}>
+              <a className="menu-item">
+                <span>{item.icon}</span>
+                <span>{item.label}</span>
+              </a>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

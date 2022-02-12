@@ -22,6 +22,7 @@ const useFilters = ({ filter, setFilter }) => {
     }
 
     if (timer) {
+      console.log("timer", timer);
       clearInterval(timer);
     }
 

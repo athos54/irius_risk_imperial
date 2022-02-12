@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -17,7 +14,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:w": "react-scripts test --watchAll=true",
+    "test:c": "react-scripts test --watchAll=false --coverage",
+    "test:c:w": "react-scripts test --watchAll=true --coverage",
+    "open:coverage": "live-server coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,6 +40,18 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
     "sass": "^1.49.7"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "coveragePathIgnorePatterns": ["<rootDir>/src/components/Menu/menuItems.js"]
+
   }
 }

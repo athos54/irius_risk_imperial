@@ -2,7 +2,6 @@ import { API } from "config/config";
 import axios from "axios";
 
 export const getPlanets = (entity, filter) => {
-  console.log("filter getPlanets", filter);
   const params = {
     search: filter.search,
     planet: filter.planet,

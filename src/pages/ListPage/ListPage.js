@@ -25,7 +25,6 @@ const ListPage = ({
   useEffect(() => {
     getPlanets(entity, filter).then((res) => {
       setPlanets(res.data);
-      console.log("createportal");
     });
   }, [filter]);
 

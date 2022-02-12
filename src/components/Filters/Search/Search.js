@@ -16,7 +16,10 @@ const Search = ({ onSearchChange }) => {
     <div className="search-container">
       <GiMagnifyingGlass />
       <input value={searchInput.value} onChange={searchInput.onChange} />
-      <AiOutlineCloseCircle onClick={searchInput.clear} />
+      <AiOutlineCloseCircle
+        className="close-button"
+        onClick={searchInput.clear}
+      />
     </div>
   );
 };

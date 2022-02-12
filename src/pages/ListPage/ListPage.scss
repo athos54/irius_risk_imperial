@@ -1,6 +1,5 @@
 .list-page-container {
   .list-page {
-    min-height: 80vh;
     display: flex;
     flex-wrap: wrap;
   }
@@ -11,6 +10,7 @@
     margin: 0 8px 8px 0;
   }
   .pagination {
+    margin-top: 24px;
     display: flex;
     justify-content: center;
   }

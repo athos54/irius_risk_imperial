@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { getData } from "services/dataService";
+import orderOptions from "./orderOptions";
 
 const useListPage = ({ entity }) => {
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState({
     search: "",
-    planet: "",
+    sortOnClient: false,
     order: "asc",
     page: 1,
   });
@@ -16,30 +17,56 @@ const useListPage = ({ entity }) => {
     if (!entity) {
       return;
     }
-    getData(entity, filter).then((res) => {
-      setItems(res.data);
-    });
+
+    if (!filter.sortOnClient) {
+      getData(entity, filter).then((res) => {
+        setItems(res.data);
+      });
+    } else {
+      if (!filter.ordering) {
+        return;
+      }
+
+      const sortedFunction = isNumberType() ? sortNumbers : sortLetters;
+      const sortedItems = items.results.sort(sortedFunction);
+      setItems({
+        ...items,
+        results: sortedItems,
+      });
+    }
   }, [filter]);
 
-  const generateSelectOptions = () => {
-    if (!items.results) {
-      return [];
-    }
-    const itemsOptions = items.results.map((planet) => {
-      const aux = planet.url.split("/");
-      const id = aux[aux.length - 2];
-      return {
-        value: id,
-        label: planet.name,
-      };
-    });
-
-    const placeHolderOption = {
-      value: -1,
-      label: "Planet name",
-    };
-    return [placeHolderOption, ...itemsOptions];
+  const isNumberType = () => {
+    const orderOption = orderOptions[entity];
+    const sortItem = orderOption.find((el) => el.value === filter.ordering);
+    return sortItem.isNumberType;
   };
+
+  const sortNumbers = (a, b) => {
+    let aNumber = parseInt(a[filter.ordering].replace(/,/g, ""));
+    if (isNaN(aNumber)) {
+      aNumber = -1;
+    }
+    let bNumber = parseInt(b[filter.ordering].replace(/,/g, ""));
+    if (isNaN(bNumber)) {
+      bNumber = -1;
+    }
+    if (filter.order === "asc") {
+      return aNumber - bNumber;
+    } else {
+      return bNumber - aNumber;
+    }
+  };
+
+  const sortLetters = (a, b) => {
+    if (filter.order === "asc") {
+      return a[filter.ordering].localeCompare(b[filter.ordering]);
+    } else {
+      return b[filter.ordering].localeCompare(a[filter.ordering]);
+    }
+  };
+
+  const generateSelectOptions = () => orderOptions[entity];
 
   const handlePageLeft = () => {
     if (filter.page > 1) {

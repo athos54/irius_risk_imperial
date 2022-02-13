@@ -39,9 +39,20 @@ In the filter section, three components were requested. A search box, two icons 
 On the search box, I have made an implementation that launches the http call to the server a few seconds after the last key pressed. This is because otherwise, if you have in mind to search for "luke", this would make four calls to the server, which is completely unnecessary, I believe that it is better, to launch the http call when we detect that the user has stopped typing. This timeout is configurable through a constants configuration file (config/config.js).
 
 About the ascending and descending order icons:
-Although in the api documentation, there is a link where it says how the implementation would have to be done (https://www.django-rest-framework.org/api-guide/filtering/#searchfilter), I get the feeling that in the api (https://swapi.dev/api/) does not have that functionality implemented. I could have done it in the client, but I believe that it is not very interesting, since the application has pagination, and the results when doing the ordering in client, would not be real at all.
 
-About the selector (of the planets), I did not understand very well the task, so I have implemented it as if it was another filter, that is sent to the server when it changes.
+I have added a fourth temporary element for the following reason
+
+Although in the api documentation, there is a link where it says how the implementation would have to be done (https://www.django-rest-framework.org/api-guide/filtering/#searchfilter), I get the feeling that in the api (https://swapi.dev/api/) does not have that functionality implemented.
+
+I have put the checkbox so you can enable sorting on the client.
+
+NOTE: As long as the client sort function is activated, the search field will not work
+
+This operation does not seem very interesting to me because the results that are sorted are only those that are currently being displayed on the screen.
+
+However, I have put that checkbox to be able to perform the ordering in the client, because I am not sure if that is what was requested in the exercise.
+
+I have created a file called orderOptions to be able to configure the elements by which they can be ordered in each of the menu sections. In each of these orderOptions elements, I have added an "isNumberType" option because depending on the data type, the function in charge of ordering the data has to work in a different way
 
 ## Data fetching
 

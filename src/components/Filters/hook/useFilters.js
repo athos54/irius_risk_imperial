@@ -13,7 +13,7 @@ const useFilters = ({ filter, setFilter }) => {
   };
 
   const handleSelectChange = (e) => {
-    setFilter({ ...filter, planet: e.target.value });
+    setFilter({ ...filter, ordering: e.target.value });
   };
 
   const handleSearchChange = (searchValue) => {
@@ -22,7 +22,6 @@ const useFilters = ({ filter, setFilter }) => {
     }
 
     if (timer) {
-      console.log("timer", timer);
       clearInterval(timer);
     }
 

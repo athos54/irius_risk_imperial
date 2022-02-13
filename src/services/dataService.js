@@ -4,8 +4,8 @@ import axios from "axios";
 export const getData = (entity, filter) => {
   const params = {
     search: filter.search,
-    planet: filter.planet,
-    ordering: filter.order === "asc" ? `name` : `-name`,
+    ordering:
+      filter.order === "asc" ? `${filter.ordering}` : `-${filter.ordering}`,
     page: filter.page,
   };
   return axios.get(`${API}/${entity}`, { params });

@@ -1,5 +1,4 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
 import { abbreviateNumber } from "./abbreviateNumber";
 
 describe("abbreviateNumber helper", () => {

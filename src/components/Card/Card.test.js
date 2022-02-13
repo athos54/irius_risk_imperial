@@ -1,5 +1,5 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Card from "./Card";
 
 describe("Card component", () => {

@@ -52,6 +52,8 @@
       "html"
     ],
     "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/reportWebVitals.js",
       "<rootDir>/src/components/ErrorForceComponent/ErrorForceComponent.js",
       "<rootDir>/src/components/ErrorBoundary/ErrorBoundary.js",
       "<rootDir>/src/components/Menu/menuItems.js",

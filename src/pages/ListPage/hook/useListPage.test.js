@@ -1,9 +1,7 @@
 /* eslint-disable jest/valid-title */
 import { renderHook } from "@testing-library/react-hooks";
 import useListPage from "./useListPage";
-import { act } from "react-dom/test-utils";
 import { waitFor } from "@testing-library/react";
-import * as planetService from "services/dataService";
 
 describe("useListPage hook", () => {
   it("if page 1 and handlePageLeft, filter should return page 1", async () => {

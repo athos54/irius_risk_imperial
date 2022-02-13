@@ -1,5 +1,5 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import usePagination from "./hook/usePagination";
 import Pagination from "./Pagination";
 

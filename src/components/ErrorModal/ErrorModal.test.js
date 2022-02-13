@@ -1,9 +1,9 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ErrorModal from "./ErrorModal";
 
 describe("ErrorModal component", () => {
-  it("expect render data from props", () => {
+  it("expect render error description", () => {
     const data = {
       close: () => {},
       errorDescription: "Error description",

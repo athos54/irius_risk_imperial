@@ -1,5 +1,5 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Menu from "./Menu";
 
 describe("Menu component", () => {
@@ -9,5 +9,6 @@ describe("Menu component", () => {
     screen.getByText(/starships/i);
     screen.getByText(/people/i);
     screen.getByText(/vehicles/i);
+    screen.getByText(/Error example/i);
   });
 });

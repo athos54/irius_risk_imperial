@@ -1,9 +1,9 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Spinner from "./Spinner";
 
 describe("Spinner component", () => {
-  it("should render the correct text", () => {
+  it("should render on screen", () => {
     render(<Spinner />);
     screen.getByTestId("spinner");
   });

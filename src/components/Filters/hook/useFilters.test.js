@@ -1,12 +1,6 @@
 /* eslint-disable jest/valid-title */
-import {
-  fireEvent,
-  prettyDOM,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
-import { renderHook, act } from "@testing-library/react-hooks";
+import { waitFor } from "@testing-library/react";
+import { renderHook } from "@testing-library/react-hooks";
 import useFilters from "./useFilters";
 
 describe("Filters component", () => {

@@ -1,9 +1,9 @@
 /* eslint-disable jest/valid-title */
-import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import PopulationIcon from "./PopulationIcon";
 
 describe("PopulationIcon component", () => {
-  it("should render the correct text", () => {
+  it("should render 3 icons", () => {
     render(<PopulationIcon />);
     const result = document.getElementsByTagName("span");
     expect(result.length).toBe(3);

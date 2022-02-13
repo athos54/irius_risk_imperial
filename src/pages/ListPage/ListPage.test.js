@@ -1,11 +1,5 @@
 /* eslint-disable jest/valid-title */
-import {
-  fireEvent,
-  prettyDOM,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ListPage from "./ListPage";
 
 describe("ListPage component", () => {
@@ -22,8 +16,7 @@ describe("ListPage component", () => {
 
     render(<ListPage {...data} />);
 
-    await waitFor(() => {
-      screen.findByText(/PLANETS/i);
-    });
+    const result = await screen.findAllByText(/PLANETS/i);
+    expect(result.length).toBe(2);
   });
 });

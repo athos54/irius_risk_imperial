@@ -33,7 +33,7 @@ const ListPage = ({
 
   return (
     <div className="list-page-container">
-      <h2>{entity.toUpperCase()}</h2>
+      <h2>{entity?.toUpperCase?.()}</h2>
       <div className="search">
         <Filters
           filter={filter}

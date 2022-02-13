@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "wouter";
 import "./Menu.scss";
 import { menuItems } from "./menuItems";
+import { VscBracketError } from "react-icons/vsc";
 
 const Menu = () => {
   return (
@@ -21,6 +22,14 @@ const Menu = () => {
             </Link>
           );
         })}
+        <Link href="/error-example">
+          <a className="menu-item">
+            <span>
+              <VscBracketError />
+            </span>
+            <span>Error example</span>
+          </a>
+        </Link>
       </div>
     </div>
   );

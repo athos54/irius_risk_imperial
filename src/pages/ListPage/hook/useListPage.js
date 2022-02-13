@@ -13,6 +13,9 @@ const useListPage = ({ entity }) => {
   });
 
   useEffect(() => {
+    if (!entity) {
+      return;
+    }
     getPlanets(entity, filter).then((res) => {
       setPlanets(res.data);
     });

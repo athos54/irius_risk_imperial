@@ -7,10 +7,11 @@ import usePageNavigation from "hooks/usePageNavigation";
 import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary";
 
 function App() {
-  const { showSpinner, page } = usePageNavigation();
+  const { showSpinner, page, errorModal } = usePageNavigation();
 
   return (
     <>
+      {errorModal}
       <ErrorBoundary>
         <div className="main-container">
           {showSpinner && <Spinner />}

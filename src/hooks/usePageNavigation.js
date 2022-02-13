@@ -7,7 +7,7 @@ import { useInterceptor } from "hooks/useInterceptor";
 const usePageNavigation = () => {
   const [location] = useLocation();
   const [page, setPage] = useState(null);
-  const { showSpinner } = useInterceptor();
+  const { showSpinner, errorModal } = useInterceptor();
 
   useEffect(() => {
     if (location === "/") {
@@ -26,6 +26,7 @@ const usePageNavigation = () => {
   }, [location]);
 
   return {
+    errorModal,
     showSpinner,
     page,
   };

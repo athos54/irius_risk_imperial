@@ -8,3 +8,5 @@ mejorar estilos
 i18n
 posibles mejoras
 sobre los filtros
+storybook
+poner bien los it

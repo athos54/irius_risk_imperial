@@ -5,7 +5,7 @@ import CardList from "./CardList";
 describe("CardList component", () => {
   it("expect render data from props", () => {
     const data = {
-      planets: {
+      items: {
         results: [
           {
             name: "earth",
@@ -26,12 +26,10 @@ describe("CardList component", () => {
 
     render(<CardList {...data} />);
 
-    expect(screen.getByText(data.planets.results[0].name)).toBeInTheDocument();
+    expect(screen.getByText(data.items.results[0].name)).toBeInTheDocument();
+    expect(screen.getByText(data.items.results[0].climate)).toBeInTheDocument();
     expect(
-      screen.getByText(data.planets.results[0].climate)
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(data.planets.results[0].population)
+      screen.getByText(data.items.results[0].population)
     ).toBeInTheDocument();
   });
 });

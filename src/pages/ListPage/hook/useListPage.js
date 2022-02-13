@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from "react";
-import { getPlanets } from "services/planetService";
+import { getData } from "services/dataService";
 
 const useListPage = ({ entity }) => {
-  const [planets, setPlanets] = useState([]);
+  const [items, setItems] = useState([]);
   const [filter, setFilter] = useState({
     search: "",
     planet: "",
@@ -16,16 +16,16 @@ const useListPage = ({ entity }) => {
     if (!entity) {
       return;
     }
-    getPlanets(entity, filter).then((res) => {
-      setPlanets(res.data);
+    getData(entity, filter).then((res) => {
+      setItems(res.data);
     });
   }, [filter]);
 
   const generateSelectOptions = () => {
-    if (!planets.results) {
+    if (!items.results) {
       return [];
     }
-    const planetsOptions = planets.results.map((planet) => {
+    const itemsOptions = items.results.map((planet) => {
       const aux = planet.url.split("/");
       const id = aux[aux.length - 2];
       return {
@@ -38,7 +38,7 @@ const useListPage = ({ entity }) => {
       value: -1,
       label: "Planet name",
     };
-    return [placeHolderOption, ...planetsOptions];
+    return [placeHolderOption, ...itemsOptions];
   };
 
   const handlePageLeft = () => {
@@ -52,7 +52,7 @@ const useListPage = ({ entity }) => {
   };
 
   return {
-    planets,
+    items,
     generateSelectOptions,
     handlePageLeft,
     handlePageRight,

@@ -3,7 +3,7 @@ import Card from "components/Card/Card";
 import "./CardList.scss";
 
 const CardList = ({
-  planets,
+  items,
   entity,
   titleKey,
   subtitleKey,
@@ -14,17 +14,17 @@ const CardList = ({
 }) => {
   return (
     <div className="card-list-container">
-      {planets?.results?.map((planet, index) => {
+      {items?.results?.map((item, index) => {
         return (
           <div key={index} className="planet">
             <Card
-              img={`assets/${entity}/${planet.name
+              img={`assets/${entity}/${item.name
                 .toLowerCase?.()
                 .replaceAll?.(" ", "")}.png`}
-              title={planet[titleKey]}
-              subtitle={planet[subtitleKey]}
-              description={descriptionString(planet[descriptionKey])}
-              other={otherString(planet[otherKey])}
+              title={item[titleKey]}
+              subtitle={item[subtitleKey]}
+              description={descriptionString(item[descriptionKey])}
+              other={otherString(item[otherKey])}
             />
           </div>
         );

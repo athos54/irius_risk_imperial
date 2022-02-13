@@ -18,14 +18,14 @@ const ListPage = ({
     filter,
     setFilter,
     generateSelectOptions,
-    planets,
+    items,
     handlePageLeft,
     handlePageRight,
   } = useListPage({ entity });
 
   const paginator = usePagination({
     filter,
-    planets,
+    items,
     entity,
     onPageLeft: handlePageLeft,
     onPageRight: handlePageRight,
@@ -43,7 +43,7 @@ const ListPage = ({
       </div>
       <div className="list-page">
         <CardList
-          planets={planets}
+          items={items}
           entity={entity}
           titleKey={titleKey}
           subtitleKey={subtitleKey}

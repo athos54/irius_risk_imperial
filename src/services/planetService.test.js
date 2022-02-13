@@ -1,12 +1,12 @@
 /* eslint-disable jest/valid-title */
 import { fireEvent, prettyDOM, render, screen } from "@testing-library/react";
-import { getPlanets } from "./planetService";
+import { getData } from "./dataService";
 import * as axios from "axios";
 jest.mock("axios", () => ({
   get: jest.fn(),
 }));
 
-describe("getPlanets service", () => {
+describe("getData service", () => {
   it("should call to with params", () => {
     const entity = "planets";
     const filter = {
@@ -15,7 +15,7 @@ describe("getPlanets service", () => {
       page: 1,
       planet: 1,
     };
-    getPlanets(entity, filter);
+    getData(entity, filter);
     expect(axios.get).toHaveBeenCalledWith("https://swapi.dev/api/planets", {
       params: {
         ordering: "-name",
@@ -34,7 +34,7 @@ describe("getPlanets service", () => {
       page: 1,
       planet: 1,
     };
-    getPlanets(entity, filter);
+    getData(entity, filter);
     expect(axios.get).toHaveBeenCalledWith("https://swapi.dev/api/planets", {
       params: {
         ordering: "name",

@@ -1,12 +1,5 @@
 /* eslint-disable jest/valid-title */
-import {
-  fireEvent,
-  prettyDOM,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react-hooks";
 import usePagination from "./usePagination";
 
 describe("usePagination hook", () => {
@@ -14,7 +7,7 @@ describe("usePagination hook", () => {
     const filter = {
       page: 1,
     };
-    const planets = {
+    const items = {
       count: 2,
     };
     const entity = "planets";
@@ -24,7 +17,7 @@ describe("usePagination hook", () => {
     const { result } = renderHook(() =>
       usePagination({
         filter,
-        planets,
+        items,
         entity,
         onPageLeft,
         onPageRight,
@@ -40,7 +33,7 @@ describe("usePagination hook", () => {
     const filter = {
       page: 2,
     };
-    const planets = {
+    const items = {
       count: 12,
     };
     const entity = "planets";
@@ -50,7 +43,7 @@ describe("usePagination hook", () => {
     const { result } = renderHook(() =>
       usePagination({
         filter,
-        planets,
+        items,
         entity,
         onPageLeft,
         onPageRight,
@@ -66,7 +59,7 @@ describe("usePagination hook", () => {
     const filter = {
       page: 1,
     };
-    const planets = {
+    const items = {
       count: 12,
     };
     const entity = "planets";
@@ -76,7 +69,7 @@ describe("usePagination hook", () => {
     const { result } = renderHook(() =>
       usePagination({
         filter,
-        planets,
+        items,
         entity,
         onPageLeft,
         onPageRight,
@@ -92,7 +85,7 @@ describe("usePagination hook", () => {
     const filter = {
       page: 2,
     };
-    const planets = {
+    const items = {
       count: 12,
     };
     const entity = "planets";
@@ -102,7 +95,7 @@ describe("usePagination hook", () => {
     const { result } = renderHook(() =>
       usePagination({
         filter,
-        planets,
+        items,
         entity,
         onPageLeft,
         onPageRight,

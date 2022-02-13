@@ -2,13 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const usePagination = ({
-  filter,
-  planets,
-  entity,
-  onPageLeft,
-  onPageRight,
-}) => {
+const usePagination = ({ filter, items, entity, onPageLeft, onPageRight }) => {
   const [min, setMin] = useState();
   const [max, setMax] = useState();
   const [total, setTotal] = useState();
@@ -16,16 +10,16 @@ const usePagination = ({
 
   useEffect(() => {
     setMax(
-      !planets.count
+      !items.count
         ? ""
-        : planets.count > 10 * filter.page
+        : items.count > 10 * filter.page
         ? 10 * filter.page
-        : planets.count
+        : items.count
     );
     setMin((filter.page - 1) * 10 + 1);
-    setTotal(planets.count || "");
+    setTotal(items.count || "");
     setItem(entity);
-  }, [filter, planets]);
+  }, [filter, items]);
 
   const handleClickLeft = () => {
     if (min === 1) {

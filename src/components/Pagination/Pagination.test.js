@@ -9,7 +9,7 @@ describe("Pagination component", () => {
       const filter = {
         page: 1,
       };
-      const planets = {
+      const items = {
         count: 2,
       };
       const entity = "planets";
@@ -17,7 +17,7 @@ describe("Pagination component", () => {
       const onPageRight = jest.fn();
       const paginator = usePagination({
         filter,
-        planets,
+        items,
         entity,
         onPageLeft,
         onPageRight,

@@ -4,7 +4,7 @@ const Spinner = () => {
   return (
     <div className="spinner-container ">
       <div className="spinner-content">
-        <div className="lds-dual-ring"></div>
+        <div data-testid="spinner" className="lds-dual-ring"></div>
       </div>
     </div>
   );

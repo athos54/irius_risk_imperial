@@ -19,8 +19,8 @@ const CardList = ({
           <div key={index} className="planet">
             <Card
               img={`assets/${entity}/${planet.name
-                .toLowerCase()
-                .replaceAll(" ", "")}.png`}
+                .toLowerCase?.()
+                .replaceAll?.(" ", "")}.png`}
               title={planet[titleKey]}
               subtitle={planet[subtitleKey]}
               description={descriptionString(planet[descriptionKey])}

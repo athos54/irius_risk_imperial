@@ -19,7 +19,8 @@
     "test:c": "react-scripts test --watchAll=false --coverage",
     "test:c:w": "react-scripts test --watchAll=true --coverage",
     "open:coverage": "live-server coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "vercel --prod"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +45,8 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
-    "sass": "^1.49.7"
+    "sass": "^1.49.7",
+    "vercel": "^23.1.2"
   },
   "jest": {
     "coverageReporters": [
@@ -60,6 +62,5 @@
       "<rootDir>/src/hooks/useInterceptor.js",
       "<rootDir>/src/hooks/usePageNavigation.js"
     ]
-
   }
 }

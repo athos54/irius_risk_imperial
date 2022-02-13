@@ -4,6 +4,19 @@ The focus of the exercise has been on the componentization by making the compone
 
 Additionally I have tried not to use external libraries (a requirement requested in the exercise statement) except for axios and a routing library (wouter).
 
+## Project scripts
+
+You can check package.json to search scripts
+
+To start project run:
+
+1. `git clone https://github.com/athos54/irius_risk_imperial.git` to get the source code
+1. Enter on project folder
+1. `npm i` to install dependencies
+1. `npm start` to launch the project
+1. `npm run test:c` to run tests
+1. `npm run open:coverage to check html reporter on the browser`
+
 ## To the test reader.
 
 Hello how are you, my name is Athos and I hope you can understand the exercise.

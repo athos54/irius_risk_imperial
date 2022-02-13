@@ -24,7 +24,7 @@ I have used react icons because it allows me a large list of icons and saves me 
 
 For app crash errors, I have implemented a react error boundary that prevent app to going to blank page, making better user experience.
 
-For http calls errors, I would use Axios interceptors. This is useful because it allows to capture all the errors of the https calls, without filling the code with catches. It also prevents you from forgetting to catch any http call errors.
+For http calls errors, I have used Axios interceptors. This is useful because it allows to capture all the errors of the https calls, without filling the code with catches. It also prevents you from forgetting to catch any http call errors.
 
 ## Services
 

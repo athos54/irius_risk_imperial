@@ -11,16 +11,15 @@ describe("getData service", () => {
     const entity = "planets";
     const filter = {
       order: "desc",
+      ordering: "name",
       search: "",
       page: 1,
-      planet: 1,
     };
     getData(entity, filter);
     expect(axios.get).toHaveBeenCalledWith("https://swapi.dev/api/planets", {
       params: {
         ordering: "-name",
         page: 1,
-        planet: 1,
         search: "",
       },
     });
@@ -30,6 +29,7 @@ describe("getData service", () => {
     const entity = "planets";
     const filter = {
       order: "asc",
+      ordering: "",
       search: "",
       page: 1,
       planet: 1,
@@ -37,9 +37,8 @@ describe("getData service", () => {
     getData(entity, filter);
     expect(axios.get).toHaveBeenCalledWith("https://swapi.dev/api/planets", {
       params: {
-        ordering: "name",
+        ordering: "",
         page: 1,
-        planet: 1,
         search: "",
       },
     });

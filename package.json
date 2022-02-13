@@ -52,6 +52,8 @@
       "html"
     ],
     "coveragePathIgnorePatterns": [
+      "<rootDir>/src/components/ErrorForceComponent/ErrorForceComponent.js",
+      "<rootDir>/src/components/ErrorBoundary/ErrorBoundary.js",
       "<rootDir>/src/components/Menu/menuItems.js",
       "<rootDir>/src/hooks/useInterceptor.js",
       "<rootDir>/src/hooks/usePageNavigation.js"

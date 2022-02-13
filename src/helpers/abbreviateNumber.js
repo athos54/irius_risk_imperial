@@ -1,7 +1,12 @@
 var SI_SYMBOL = ["", "k", "M", "B", "T", "P", "E"];
 
 export function abbreviateNumber(_number) {
-  const number = _number.replace(/,/g, "");
+  let number;
+  if (typeof _number === "string") {
+    number = _number.replace(/,/g, "");
+  } else {
+    number = _number;
+  }
   // what tier? (determines SI symbol)
   var tier = (Math.log10(Math.abs(number)) / 3) | 0;
 

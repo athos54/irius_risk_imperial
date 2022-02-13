@@ -36,7 +36,7 @@ describe("Filters component", () => {
     expect(setFilter).toHaveBeenCalledWith({ order: "asc" });
   });
 
-  it("handleSelectChange should call setFilter with {planet: [value]}", async () => {
+  it("handleSelectChange should call setFilter with {ordering: [value]}", async () => {
     const setFilter = jest.fn();
     const filter = {};
 
@@ -44,7 +44,7 @@ describe("Filters component", () => {
 
     result.current.handleSelectChange({ target: { value: 3 } });
 
-    expect(setFilter).toHaveBeenCalledWith({ planet: 3 });
+    expect(setFilter).toHaveBeenCalledWith({ ordering: 3 });
   });
 
   it("handleSearchChange sould set timer", async () => {
